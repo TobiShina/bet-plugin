@@ -1,0 +1,151 @@
+/* src/components/BetSlip/BetSlip.module.css */
+.betSlipContainer {
+  background-color: #f8f8f8;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 15px;
+  margin-top: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+.betSlipTitle {
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #007bff;
+  margin-bottom: 15px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.emptySlip {
+  text-align: center;
+  color: #777;
+  font-style: italic;
+  padding: 20px 0;
+}
+
+.selectionList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.betSelectionItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px 15px;
+  margin-bottom: 8px;
+  font-size: 0.9em;
+  color: #444;
+}
+
+.betSelectionItem span:first-child {
+  font-weight: 600;
+}
+
+.removeButton {
+  background: none;
+  border: none;
+  color: #dc3545; /* Red color for remove */
+  font-size: 1.2em;
+  cursor: pointer;
+  padding: 0 5px;
+  margin-left: 10px;
+  transition: color 0.2s;
+}
+
+.removeButton:hover {
+  color: #c82333;
+}
+
+.betSummary {
+  margin-top: 20px;
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+}
+
+.betSummary p {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1em;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.summaryValue {
+  font-weight: bold;
+  color: #007bff;
+}
+
+.stakeInputGroup {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.stakeLabel {
+  flex-shrink: 0;
+  margin-right: 10px;
+  font-weight: 600;
+}
+
+.stakeInput {
+  flex-grow: 1;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1em;
+  max-width: 150px; /* Control input width */
+}
+
+.placeBetButton {
+  width: 100%;
+  padding: 12px;
+  background-color: #28a745; /* Green */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.placeBetButton:hover:not(:disabled) {
+  background-color: #218838;
+}
+
+.placeBetButton:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .betSelectionItem {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .betSelectionItem span {
+    margin-bottom: 5px;
+  }
+  .removeButton {
+    align-self: flex-end;
+  }
+  .stakeInputGroup {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .stakeLabel {
+    margin-bottom: 5px;
+  }
+  .stakeInput {
+    width: 100%;
+    max-width: unset;
+  }
+}

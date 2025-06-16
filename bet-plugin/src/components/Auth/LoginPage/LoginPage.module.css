@@ -1,0 +1,109 @@
+/* src/components/Auth/LoginPage/LoginPage.module.css */
+.loginContainer {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: "Arial", sans-serif;
+  color: #333;
+}
+
+.title {
+  font-size: 2em;
+  color: #007bff;
+  margin-bottom: 25px;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.error {
+  color: #dc3545; /* Red for error messages */
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 15px;
+  font-size: 0.9em;
+}
+
+.inputGroup {
+  text-align: left;
+}
+
+.label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #555;
+}
+
+.inputField {
+  width: calc(100% - 20px); /* Adjust for padding */
+  padding: 12px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+  box-sizing: border-box; /* Include padding in width */
+}
+
+.inputField:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+}
+
+.submitButton {
+  background-color: #007bff;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-top: 10px;
+}
+
+.submitButton:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+.submitButton:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.signupText {
+  margin-top: 25px;
+  font-size: 0.95em;
+  color: #666;
+}
+
+.signupLink {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.signupLink:hover {
+  text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .loginContainer {
+    margin: 20px 10px;
+    padding: 20px;
+  }
+  .title {
+    font-size: 1.8em;
+  }
+}
