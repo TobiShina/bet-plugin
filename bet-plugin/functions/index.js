@@ -1,19 +1,17 @@
-/**
- * Import function triggers from their respective submodules:
- *
- * const {onCall} = require("firebase-functions/v2/https");
- * const {onDocumentWritten} = require("firebase-functions/v2/firestore");
- *
- * See a full list of supported triggers at https://firebase.google.com/docs/functions
- */
+// functions/index.js
+const functions = require("firebase-functions");
+const admin = require("firebase-admin");
 
-const {onRequest} = require("firebase-functions/v2/https");
-const logger = require("firebase-functions/logger");
+// Initialize Firebase Admin SDK ONLY ONCE in the main index.js
+admin.initializeApp();
 
-// Create and deploy your first functions
-// https://firebase.google.com/docs/functions/get-started
+// Export each function from its respective module
+exports.placeBet = require("./src/bets").placeBet;
+exports.settleBet = require("./src/bets").settleBet;
+exports.updateMatchScoreAndStatus =
+  require("./src/matches").updateMatchScoreAndStatus;
+exports.createUserProfile = require("./src/users").createUserProfile;
 
-// exports.helloWorld = onRequest((request, response) => {
-//   logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
-// });
+// You can also export groups of functions if you prefer a namespace:
+// exports.bets = require('./src/bets'); // Then callable would be functions.bets.placeBet
+// However, direct export as above makes the callable names cleaner.
