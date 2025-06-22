@@ -64,3 +64,52 @@ exports.updateMatchScoreAndStatus = functions.https.onCall(
     }
   }
 );
+
+// --- getMatches Cloud Function (Callable) ---
+// Allows the host UI to fetch match data with optional filters
+exports.getMatches = functions.https.onCall(async (data, context) => {
+  // Optional: You might want to add authentication here if only logged-in users can view matches.
+  // if (!context.auth) {
+  //   throw new functions.https.HttpsError(
+  //     "unauthenticated",
+  //     "You must be logged in to view matches."
+  //   );
+  // }
+
+  const { status, sport, limit = 100 } = data || {}; // Default limit to 100
+
+  let matchesRef = db.collection("matches");
+
+  if (status) {
+    matchesRef = matchesRef.where("status", "==", status);
+  }
+  if (sport) {
+    matchesRef = matchesRef.where("sport", "==", sport);
+  }
+
+  // Add ordering, e.g., by match date/time for upcoming matches
+  matchesRef = matchesRef.orderBy("matchDateTime", "asc"); // Assuming you have this field
+
+  // Limit the number of results
+  matchesRef = matchesRef.limit(limit);
+
+  try {
+    const snapshot = await matchesRef.get();
+    const matches = [];
+    snapshot.forEach((doc) => {
+      matches.push({ id: doc.id, ...doc.data() });
+    });
+
+    functions.logger.log("Fetched matches:", {
+      query: data,
+      count: matches.length,
+    });
+    return { success: true, matches: matches };
+  } catch (error) {
+    functions.logger.error("Error fetching matches:", error);
+    throw new functions.https.HttpsError(
+      "internal",
+      "Failed to retrieve match data."
+    );
+  }
+});

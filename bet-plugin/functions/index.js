@@ -10,7 +10,7 @@ exports.placeBet = require("./src/bets").placeBet;
 exports.settleBet = require("./src/bets").settleBet;
 exports.updateMatchScoreAndStatus =
   require("./src/matches").updateMatchScoreAndStatus;
-exports.createUserProfile = require("./src/users").createUserProfile;
+exports.getMatches = require("./src/matches").getMatches;
 
 // You can also export groups of functions if you prefer a namespace:
 // exports.bets = require('./src/bets'); // Then callable would be functions.bets.placeBet
